@@ -4,6 +4,14 @@
 >
 > *Connect, Control, and Collaborate Seamlessly across devices with high-performance screen sharing and real-time communication.*
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Node.js](https://img.shields.io/badge/Node.js-16%2B-green.svg)](https://nodejs.org/)
+[![Electron](https://img.shields.io/badge/Electron-39-blue.svg)](https://www.electronjs.org/)
+[![React](https://img.shields.io/badge/React-19-blue.svg)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue.svg)](https://www.typescriptlang.org/)
+
+**DeskLink** is an open-source remote desktop application built with Electron, React, and WebRTC. It provides ultra-low latency screen sharing, remote mouse/keyboard control, two-way audio calling, and real-time text chat - making it a powerful alternative to commercial solutions like AnyDesk and TeamViewer.
+
 ---
 
 ## ✨ Features at a Glance
@@ -28,6 +36,16 @@ Built with modern, high-performance technologies:
 - **Real-time Comm:** WebRTC (SimplePeer), Socket.io
 - **Server:** Node.js, Socket.io
 - **Styling:** CSS3, Glassmorphism Design
+
+## 🔍 Keywords & Topics
+
+This project is optimized for discovery with these relevant topics:
+- `remote-desktop` `remote-control` `screen-sharing` `webrtc` `p2p` `desktop-sharing` `remote-access`
+- `electron` `react` `typescript` `vite` `socket.io` `video-streaming` `audio-calling`
+- `real-time-communication` `peer-to-peer` `desktop-application` `cross-platform`
+- `anydesk-alternative` `teamviewer-alternative` `remote-support` `remote-assistance`
+- `screen-capture` `mouse-control` `keyboard-control` `voice-chat` `text-chat`
+- `collaboration-tool` `remote-work` `tech-support` `open-source`
 
 ---
 
@@ -93,6 +111,20 @@ DeskLink isn't just functional; it's designed to be visually stunning.
 - **Glassmorphism UI**: Sleek, semi-transparent elements using `backdrop-filter`.
 - **Dynamic Interactions**: Smooth transitions and hover effects.
 - **Dark Mode**: Easy on the eyes for long sessions.
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## ⭐ Star History
+
+If you find this project useful, please consider giving it a star ⭐ on GitHub!
 
 ---
 
