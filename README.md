@@ -12,6 +12,8 @@
 
 **DeskLink** is an open-source remote desktop application built with Electron, React, and WebRTC. It provides ultra-low latency screen sharing, remote mouse/keyboard control, two-way audio calling, and real-time text chat - making it a powerful alternative to commercial solutions like AnyDesk and TeamViewer.
 
+<img width="1914" height="978" alt="image" src="https://github.com/user-attachments/assets/830c3664-f747-48df-9b8b-56b2e3d11c4f" />
+
 ---
 
 ## ✨ Features at a Glance
