@@ -1,0 +1,35 @@
+{
+  "name": "desklink-server",
+  "version": "1.0.0",
+  "description": "DeskLink Signaling Server - WebRTC signaling server for remote desktop connections",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "webrtc",
+    "signaling-server",
+    "socket.io",
+    "p2p",
+    "remote-desktop",
+    "peer-to-peer",
+    "real-time-communication",
+    "websocket",
+    "nodejs",
+    "remote-access",
+    "screen-sharing",
+    "ice-candidate",
+    "stun-turn",
+    "network-relay"
+  ],
+  "author": "DeskLink Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/DeskLink.git"
+  },
+  "dependencies": {
+    "socket.io": "^4.8.1"
+  }
+}
