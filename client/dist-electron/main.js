@@ -1,84 +1,63 @@
-import { app, BrowserWindow, ipcMain, desktopCapturer } from "electron";
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
-import robot from "robotjs";
-const __dirname$1 = dirname(fileURLToPath(import.meta.url));
-const DIST = process.env.DIST || "dist";
-process.env.DIST = DIST;
-process.env.VITE_PUBLIC = app.isPackaged ? DIST : join(DIST, "../public");
-let win;
-const VITE_DEV_SERVER_URL = process.env["VITE_DEV_SERVER_URL"];
-function createWindow() {
-  win = new BrowserWindow({
-    icon: join(process.env.VITE_PUBLIC, "vite.svg"),
+import { app as n, BrowserWindow as m, ipcMain as l, desktopCapturer as g } from "electron";
+import { dirname as k, join as r } from "node:path";
+import { fileURLToPath as v } from "node:url";
+import s from "robotjs";
+const y = k(v(import.meta.url)), c = process.env.DIST || "dist";
+process.env.DIST = c;
+process.env.VITE_PUBLIC = n.isPackaged ? c : r(c, "../public");
+let o;
+const d = process.env.VITE_DEV_SERVER_URL;
+function w() {
+  o = new m({
+    icon: r(process.env.VITE_PUBLIC, "vite.svg"),
     webPreferences: {
-      preload: join(__dirname$1, "preload.mjs"),
-      nodeIntegration: false,
-      contextIsolation: true
+      preload: r(y, "preload.mjs"),
+      nodeIntegration: !1,
+      contextIsolation: !0
     }
-  });
-  win.webContents.on("did-finish-load", () => {
-    win == null ? void 0 : win.webContents.send("main-process-message", (/* @__PURE__ */ new Date()).toLocaleString());
-  });
-  if (VITE_DEV_SERVER_URL) {
-    win.loadURL(VITE_DEV_SERVER_URL);
-    win.webContents.openDevTools();
-  } else {
-    win.loadFile(join(process.env.DIST, "index.html"));
-  }
+  }), o.webContents.on("did-finish-load", () => {
+    o == null || o.webContents.send("main-process-message", (/* @__PURE__ */ new Date()).toLocaleString());
+  }), d ? (o.loadURL(d), o.webContents.openDevTools()) : o.loadFile(r(process.env.DIST, "index.html"));
 }
-app.on("window-all-closed", () => {
-  if (process.platform !== "darwin") {
-    app.quit();
-  }
+n.on("window-all-closed", () => {
+  process.platform !== "darwin" && n.quit();
 });
-app.on("activate", () => {
-  if (BrowserWindow.getAllWindows().length === 0) {
-    createWindow();
-  }
+n.on("activate", () => {
+  m.getAllWindows().length === 0 && w();
 });
-app.whenReady().then(() => {
-  createWindow();
-  ipcMain.handle("get-desktop-sources", async () => {
-    const sources = await desktopCapturer.getSources({
-      types: ["screen", "window"],
-      thumbnailSize: { width: 150, height: 150 }
-    });
-    return sources.map((source) => ({
-      id: source.id,
-      name: source.name,
-      thumbnail: source.thumbnail.toDataURL()
-    }));
-  });
-  ipcMain.on("remote-input", (event, data) => {
+n.whenReady().then(() => {
+  w(), l.handle("get-desktop-sources", async () => (await g.getSources({
+    types: ["screen", "window"],
+    thumbnailSize: { width: 150, height: 150 }
+  })).map((e) => ({
+    id: e.id,
+    name: e.name,
+    thumbnail: e.thumbnail.toDataURL()
+  }))), l.on("remote-input", (h, e) => {
     try {
-      const { type } = data;
-      const screenSize = robot.getScreenSize();
-      if (type === "mousemove") {
-        const { x, y } = data;
-        const targetX = x * screenSize.width;
-        const targetY = y * screenSize.height;
-        robot.moveMouse(targetX, targetY);
-      } else if (type === "click") {
-        robot.mouseClick();
-      } else if (type === "keydown") {
-        const keyMap = {
-          "Enter": "enter",
-          "Backspace": "backspace",
-          "ArrowUp": "up",
-          "ArrowDown": "down",
-          "ArrowLeft": "left",
-          "ArrowRight": "right",
+      const { type: t } = e, a = s.getScreenSize();
+      if (t === "mousemove") {
+        const { x: p, y: i } = e, f = p * a.width, u = i * a.height;
+        s.moveMouse(f, u);
+      } else if (t === "click")
+        s.mouseClick();
+      else if (t === "keydown") {
+        const i = {
+          Enter: "enter",
+          Backspace: "backspace",
+          ArrowUp: "up",
+          ArrowDown: "down",
+          ArrowLeft: "left",
+          ArrowRight: "right",
           " ": "space"
-        };
-        const k = keyMap[data.key] || data.key.toLowerCase();
+        }[e.key] || e.key.toLowerCase();
         try {
-          robot.keyTap(k);
+          s.keyTap(i);
         } catch {
         }
       }
-    } catch (e) {
-      console.error("Input error", e);
+    } catch (t) {
+      console.error("Input error", t);
     }
   });
 });
